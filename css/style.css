@@ -1,0 +1,233 @@
+/* ============ Sunny Qiao portfolio — shared styles ============ */
+
+:root {
+  --accent: #a61010;
+  --accent-80: rgba(166, 16, 16, 0.8);
+  --accent-60: rgba(166, 16, 16, 0.6);
+  --ink: #000;
+  --ink-90: rgba(0, 0, 0, 0.9);
+  --ink-80: rgba(0, 0, 0, 0.8);
+  --ink-60: rgba(0, 0, 0, 0.6);
+  --card-blue-bg: #dce4ef;
+  --card-blue-fg: #3a4a7a;
+  --card-green-bg: #dde9dc;
+  --card-green-fg: #3d6e50;
+  --card-purple-bg: #e6e0ee;
+  --card-purple-fg: #5a4a8a;
+  --card-pink-bg: #f2e2e6;
+  --card-pink-fg: #9e4560;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: "Google Sans Flex", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; }
+
+.page {
+  width: 100%;
+  max-width: 1064px; /* 1000px design column + 32px padding each side */
+  margin: 0 auto;
+  padding: 120px 32px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* ---------- intro block ---------- */
+
+.intro { display: flex; flex-direction: column; gap: 40px; }
+
+.intro .title { display: flex; flex-direction: column; gap: 12px; }
+
+h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--ink-90);
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-60);
+}
+
+.info { display: flex; flex-direction: column; gap: 40px; }
+
+.info-row {
+  display: grid;
+  grid-template-columns: 223px 283px;
+  gap: 40px;
+}
+
+.meta { display: flex; flex-direction: column; gap: 8px; }
+
+.meta-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.meta p, .meta li { font-size: 14px; }
+
+.meta ul { list-style: disc; padding-left: 21px; }
+
+/* ---------- sections ---------- */
+
+section { display: flex; flex-direction: column; gap: 20px; }
+
+section.gap-40 { gap: 40px; }
+
+h2 { font-size: 24px; font-weight: 600; }
+h3 { font-size: 20px; font-weight: 600; }
+h4 { font-size: 18px; font-weight: 600; }
+
+.stack-20 { display: flex; flex-direction: column; gap: 20px; }
+.stack-40 { display: flex; flex-direction: column; gap: 40px; }
+.stack-80 { display: flex; flex-direction: column; gap: 80px; }
+
+p.body, li.body { font-size: 16px; }
+
+.accent { color: var(--accent); }
+.accent-80 { color: var(--accent-80); }
+.accent-60 { color: var(--accent-60); }
+.muted { color: var(--ink-60); }
+
+.q { font-size: 16px; font-weight: 700; color: var(--accent); }
+
+strong { font-weight: 700; }
+.med { font-weight: 500; }
+.semi { font-weight: 600; }
+
+ul.bullets { list-style: disc; padding-left: 24px; display: flex; flex-direction: column; }
+ul.bullets li { font-size: 16px; }
+
+/* ---------- figure grids ---------- */
+
+figure { display: flex; flex-direction: column; gap: 12px; }
+
+figure img { width: 100%; object-fit: cover; }
+
+figcaption { font-size: 12px; word-break: break-word; }
+figcaption b { font-weight: 700; }
+
+.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; }
+
+.grid-6 figure img { aspect-ratio: 133 / 178; }
+.grid-4 figure img { aspect-ratio: 4 / 3; }
+.grid-3 figure img { aspect-ratio: 4 / 3; }
+
+/* ---------- colored outcome cards ---------- */
+
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+
+.card {
+  border-radius: 10px;
+  border: 0.3px solid currentColor;
+  padding: 21px 19px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content { display: flex; flex-direction: column; gap: 12px; width: 183px; max-width: 100%; }
+
+.card-title { display: flex; align-items: center; gap: 8px; }
+
+.card-title img, .card-title svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+.card-title span { font-size: 16px; font-weight: 700; white-space: nowrap; }
+
+.card p { font-size: 12px; }
+
+.card-blue   { background: var(--card-blue-bg);   color: var(--card-blue-fg); }
+.card-green  { background: var(--card-green-bg);  color: var(--card-green-fg); }
+.card-purple { background: var(--card-purple-bg); color: var(--card-purple-fg); }
+.card-pink   { background: var(--card-pink-bg);   color: var(--card-pink-fg); }
+
+/* ---------- cropped-image helpers (match Figma crops) ---------- */
+
+.crop { position: relative; overflow: hidden; }
+.crop img { position: absolute; max-width: none; }
+
+.crop-wf img     { height: 116.08%; width: 385.71%; left: -142.86%; top: -8.51%; }
+.crop-flow img   { height: 140.22%; width: 104.51%; left: -2.25%;  top: -20.11%; }
+.crop-tall img   { height: 130.65%; width: 100%;    left: 0;       top: -19.35%; }
+.crop-gates img  { height: 100%;    width: 114.61%; left: 0;       top: 0; }
+.crop-matrix img { height: 107.19%; width: 132.33%; left: 0;       top: -7.18%; }
+
+/* ---------- next work footer ---------- */
+
+.next-work {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: inherit;
+}
+
+.next-work .next-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.next-work .next-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ink-90);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.next-work .next-title::after {
+  content: "→";
+  transition: transform 0.2s ease;
+}
+
+.next-work:hover .next-title { text-decoration: underline; text-underline-offset: 6px; }
+.next-work:hover .next-title::after { transform: translateX(8px); }
+
+/* ---------- misc ---------- */
+
+a.text-link { color: blue; }
+
+.center { align-items: center; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .page { padding-top: 72px; gap: 64px; }
+  h1 { font-size: 32px; }
+  .info-row { grid-template-columns: 1fr 1fr; }
+  .grid-6 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr !important; }
+  .row-wrap { flex-wrap: wrap; }
+}
+
+@media (max-width: 560px) {
+  .info-row { grid-template-columns: 1fr; }
+  .grid-6 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunny Qiao — UX/Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,300..1000&family=Crimson+Text:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --rose: #9e4560;
+      --rose-70: rgba(158, 69, 96, 0.7);
+      --rose-tint: #f2e2e6;
+      --green: #3d6e50;
+      --mono: "IBM Plex Mono", monospace;
+    }
+
+    .page { gap: 96px; }
+
+    /* ---------- hero ---------- */
+    .hero { display: flex; flex-direction: column; gap: 12px; }
+    .real-time { font-family: "Crimson Text", serif; font-size: 14px; color: var(--rose-70); }
+    .hero-title { display: flex; flex-direction: column; gap: 28px; }
+    .name-intro { display: flex; flex-direction: column; gap: 16px; }
+    .tagline { font-size: 16px; font-weight: 500; }
+    .ship-tags { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .ship-label { font-size: 12px; color: var(--ink-60); }
+    .ship-tags .chip { border: none; background: none; padding: 0; border-radius: 0; }
+    .chip {
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      color: var(--ink-80); background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 4px 12px; border-radius: 999px; white-space: nowrap; line-height: 1.4;
+    }
+    .sub-info { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+    .open-to-work {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--rose-tint); border-radius: 20px; padding: 5px 12px;
+      color: var(--rose); font-weight: 600; width: fit-content;
+    }
+    .otw-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .cta-links { display: flex; gap: 20px; font-size: 12px; font-weight: 500; }
+    .cta-links a { color: var(--ink-60); text-decoration: none; transition: color 0.15s ease; }
+    .cta-links a:hover { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ---------- projects ---------- */
+    .projects-row { display: flex; flex-direction: row; gap: 100px; align-items: flex-start; }
+    .project-items { display: flex; flex-direction: column; gap: 40px; flex-shrink: 0; }
+    .proj {
+      display: flex; flex-direction: column; gap: 4px;
+      text-decoration: none; color: inherit; cursor: pointer;
+      transition: opacity 0.25s ease;
+    }
+    .proj-title { font-size: 16px; font-weight: 500; color: #000; transition: color 0.15s ease; }
+    .proj-sub { font-size: 10px; color: var(--ink-60); }
+    .project-items:hover .proj:not(:hover) { opacity: 0.25; }
+    .proj:hover .proj-title { color: var(--rose); }
+    .overview { display: flex; flex-direction: column; gap: 12px; width: 517px; max-width: 100%; opacity: 0; transition: opacity 0.3s ease; }
+    .project-items:hover ~ .overview { opacity: 1; }
+    .overview-box {
+      border: 1px solid rgba(0, 0, 0, 0.1); background: #fff;
+      height: 331px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 24px; gap: 12px;
+    }
+    .overview-box .ov-line { font-size: 16px; }
+    .overview-box .ov-big { font-size: 20px; font-weight: 700; }
+    .overview-caption { font-size: 14px; color: var(--ink-60); }
+
+    /* ---------- core / work / about tabs ---------- */
+    .tabs-row { display: flex; flex-direction: row; gap: 120px; align-items: flex-start; }
+    .tab-nav { display: flex; flex-direction: column; gap: 40px; flex-shrink: 0; width: 231px; }
+    .tab-item { display: flex; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; text-align: left; padding: 0; font-family: inherit; }
+    .tab-title { font-size: 16px; font-weight: 500; color: #000; transition: color 0.15s ease; }
+    .tab-sub { font-size: 10px; color: var(--ink-60); }
+    .tab-item:hover .tab-title { color: var(--rose); }
+    .tab-item.active .tab-title { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
+    .tab-content { width: 649px; max-width: 100%; }
+    .tab-panel { display: none; animation: fadeIn 0.35s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+    /* label-row pattern shared by CORE + WORK EXPERIENCE (scan: labels align left) */
+    .lrows { display: flex; flex-direction: column; gap: 28px; }
+    .lrow { display: flex; gap: 32px; align-items: baseline; }
+    .lrow-label {
+      width: 170px; flex-shrink: 0;
+      font-family: var(--mono); font-size: 12px; font-weight: 600;
+      color: var(--rose); letter-spacing: 1px; text-transform: uppercase;
+    }
+    .lrow-body { flex: 1; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .lrow-body p { font-size: 14px; }
+
+    /* about panel */
+    .about-grid { display: flex; gap: 48px; align-items: flex-start; }
+    .about-photo { width: 127px; height: 170px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+    .about-info { display: flex; flex-direction: column; gap: 28px; flex: 1; min-width: 0; }
+    .about-block { display: flex; flex-direction: column; gap: 6px; }
+    .mini-label { font-size: 10px; font-weight: 600; color: var(--rose); letter-spacing: 0.08em; text-transform: uppercase; }
+    .about-block p, .about-block a { font-size: 12px; }
+    .quote-swap { position: relative; display: block; font-size: 14px; font-style: italic; color: var(--rose); cursor: default; margin-top: 2px; }
+    .quote-swap .q-es, .quote-swap .q-en { transition: opacity 0.3s ease; display: block; }
+    .quote-swap .q-en { position: absolute; inset: 0; opacity: 0; }
+    .quote-swap:hover .q-es { opacity: 0; }
+    .quote-swap:hover .q-en { opacity: 1; }
+    .facts p { padding-left: 14px; text-indent: -14px; }
+    .places-list { display: flex; flex-direction: column; gap: 2px; }
+    .places-list a { color: #000; text-decoration: underline; text-underline-offset: 2px; transition: color 0.15s ease; width: fit-content; }
+    .places-list a:hover { color: var(--rose); }
+
+    /* ---------- contact ---------- */
+    .contact-row { display: flex; flex-direction: row; gap: 80px; align-items: stretch; }
+    .contact-info { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; width: 440px; flex-shrink: 0; }
+    .contact-card { display: flex; flex-direction: column; gap: 18px; }
+    .contact-heading { font-size: 22px; font-weight: 600; color: var(--rose); }
+    .contact-card > p { font-size: 14px; }
+    .contact-email {
+      font-size: 18px; font-weight: 700; color: var(--rose);
+      text-decoration: none; width: fit-content;
+    }
+    .contact-email:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .contact-note { font-size: 12px; color: var(--ink-60); }
+    .contact-note b { color: var(--rose); font-weight: 600; }
+    .copyright { font-size: 12px; color: var(--ink-60); }
+    .contact-form { display: flex; flex-direction: column; gap: 40px; flex: 1; }
+    .form-row { display: flex; gap: 80px; }
+    .field { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .field label { font-size: 12px; font-weight: 300; color: var(--ink-60); }
+    .field input, .field textarea {
+      border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      font-family: inherit; font-size: 14px; padding: 4px 0; background: transparent;
+      border-radius: 0; resize: none; outline: none; transition: border-color 0.2s ease;
+    }
+    .field input:focus, .field textarea:focus { border-bottom-color: var(--rose); }
+    .field.message textarea { min-height: 280px; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .form-status { font-size: 12px; }
+    .form-status.ok { color: var(--green); }
+    .form-status.err { color: var(--accent); }
+    .send-btn {
+      background: none; border: none; font-family: inherit;
+      font-size: 14px; font-weight: 600; color: var(--ink-60); cursor: pointer; padding: 0;
+      transition: color 0.15s ease;
+    }
+    .send-btn:hover:not(:disabled) { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
+    .send-btn:disabled { cursor: default; color: var(--ink-60); }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 900px) {
+      .projects-row, .tabs-row, .contact-row { flex-direction: column; gap: 40px; }
+      .overview { opacity: 1; width: 100%; }
+      .tab-nav { flex-direction: row; gap: 24px; width: auto; flex-wrap: wrap; }
+      .lrow { flex-direction: column; gap: 8px; }
+      .about-grid { flex-direction: column; gap: 24px; }
+      .form-row { flex-direction: column; gap: 24px; }
+      .contact-info, .contact-form { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <p class="real-time">it&rsquo;s <span id="clock">--:--:-- --</span> in Bloomington, Indiana</p>
+      <div class="hero-title">
+        <div class="name-intro">
+          <h1>Sunny Qiao</h1>
+          <p class="tagline">UX/Product Designer who translates stakeholder requirements into impactful solutions</p>
+          <div class="ship-tags">
+            <span class="ship-label">shipped products in</span>
+            <span class="chip">Enterprise SaaS</span>
+            <span class="chip">B2B</span>
+            <span class="chip">AI</span>
+          </div>
+        </div>
+        <div class="sub-info">
+          <p>+ M.S. HCI/d at Indiana University, Bloomington (May 2027)</p>
+          <p class="open-to-work"><span class="otw-dot"></span>Open to work opportunities in B2B, Healthcare, CPG</p>
+        </div>
+        <nav class="cta-links">
+          <a href="#about" id="about-link">About</a>
+          <a href="https://drive.google.com/file/d/15Pz79JW9SZ-MhiQ4KAedn6gPOqaXNHxn/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+          <a href="https://www.linkedin.com/in/sunny-qiao-091a25284/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=qiao@iu.edu" target="_blank" rel="noopener">Email</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="projects-row">
+      <div class="project-items">
+        <a class="proj" href="data-to-earn.html">
+          <span class="proj-title">“Data-to-Earn” Telecom System Market Entry</span>
+          <span class="proj-sub">market-entry feasibility for a two-sided telecom startup</span>
+        </a>
+        <a class="proj" href="sensing-impressionism.html">
+          <span class="proj-title">Musuem Experience Design for Impressionism</span>
+          <span class="proj-sub">a multi-modal system across physical, spatial, and screen</span>
+        </a>
+        <a class="proj" href="tracy.html">
+          <span class="proj-title">Robotics System Design &amp; Engineering</span>
+          <span class="proj-sub">an ambient robot that reads everyday traces as health signals</span>
+        </a>
+        <div class="proj">
+          <span class="proj-title">Solve Decision Fatigue for Corporate Workers</span>
+          <span class="proj-sub">case study coming soon</span>
+        </div>
+        <div class="proj">
+          <span class="proj-title">B2B Corporate Website Design</span>
+          <span class="proj-sub">case study coming soon</span>
+        </div>
+        <div class="proj">
+          <span class="proj-title">Integrate AI into Local Café</span>
+          <span class="proj-sub">case study coming soon</span>
+        </div>
+      </div>
+      <div class="overview" aria-hidden="true">
+        <div class="overview-box">
+          <p class="ov-line">这是一个tbd界面（正在我的垃圾堆里火速作图</p>
+          <p class="ov-big">谢谢你看我的作品集，祝你不劳而获很多刀乐</p>
+        </div>
+        <p class="overview-caption">[two-lines-max-addition-to-elaborate]</p>
+      </div>
+    </section>
+
+    <section class="tabs-row" id="about">
+      <div class="tab-nav">
+        <button class="tab-item active" data-tab="core">
+          <span class="tab-title">CORE</span>
+          <span class="tab-sub">skills I bring to the table</span>
+        </button>
+        <button class="tab-item" data-tab="work">
+          <span class="tab-title">WORK EXPERIENCE</span>
+          <span class="tab-sub">where the skills got sharpened</span>
+        </button>
+        <button class="tab-item" data-tab="me">
+          <span class="tab-title">ABOUT ME</span>
+          <span class="tab-sub">ultimate 360° filter-less sunny</span>
+        </button>
+      </div>
+
+      <div class="tab-content">
+        <div class="tab-panel active" id="panel-core">
+          <div class="lrows">
+            <div class="lrow">
+              <p class="lrow-label">TECHNICAL FLUENCY</p>
+              <div class="lrow-body chips">
+                <span class="chip">Python</span>
+                <span class="chip">Git</span>
+                <span class="chip">Bash</span>
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">Raspberry Pi</span>
+              </div>
+            </div>
+            <div class="lrow">
+              <p class="lrow-label">UX SKILLS</p>
+              <div class="lrow-body chips">
+                <span class="chip">Figma</span>
+                <span class="chip">Vibe Coding</span>
+                <span class="chip">Adobe Design Suite</span>
+                <span class="chip">User Research</span>
+                <span class="chip">Usability Testing</span>
+                <span class="chip">Rapid Prototyping</span>
+                <span class="chip">Design System</span>
+                <span class="chip">Information Architecture</span>
+                <span class="chip">Interaction Design</span>
+              </div>
+            </div>
+            <div class="lrow">
+              <p class="lrow-label">OPERATIONAL</p>
+              <div class="lrow-body chips">
+                <span class="chip">System thinking</span>
+                <span class="chip">Project management</span>
+                <span class="chip">Comfort with ambiguity</span>
+                <span class="chip">Structured documentation</span>
+                <span class="chip">Cross-functional collaboration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-work">
+          <div class="lrows">
+            <div class="lrow">
+              <p class="lrow-label">WHAT I DO</p>
+              <div class="lrow-body"><p>I work across B2B products on enterprise SaaS and internal business operation tools.</p></div>
+            </div>
+            <div class="lrow">
+              <p class="lrow-label">STRENGTHS</p>
+              <div class="lrow-body"><p>I’m proficient at framing ambiguous problems, validating product directions, and turning complex stakeholder needs into clear workflows, prototypes, and documentation.</p></div>
+            </div>
+            <div class="lrow">
+              <p class="lrow-label">COLLABORATION</p>
+              <div class="lrow-body"><p>I collaborate closely with engineers and cross-functional stakeholders to communicate design rationale and make product decisions easier to implement.</p></div>
+            </div>
+            <div class="lrow">
+              <p class="lrow-label">BEYOND UX</p>
+              <div class="lrow-body"><p>My earlier marketing experience helps me think beyond the interface — toward adoption, messaging, and business impact.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-me">
+          <div class="about-grid">
+            <img class="about-photo" src="assets/sunny-photo.jpg" alt="Sunny Qiao">
+            <div class="about-info">
+              <div class="about-block">
+                <p class="mini-label">Values</p>
+                <p>I value resilience, curiosity, and adaptability.</p>
+              </div>
+              <div class="about-block">
+                <p class="mini-label">Words I live by • 虚静 ♡</p>
+                <span class="quote-swap">
+                  <span class="q-es">Si ser amable no cuesta esfuerzo, entonces sé amable.</span>
+                  <span class="q-en">If being kind takes no effort, then be kind.</span>
+                </span>
+              </div>
+              <div class="about-block">
+                <p class="mini-label">In free time, I’m a quiet but analytical soul</p>
+                <p>I like watching and playing texas pokers, reading by the lake, studying value investment, hopping to museums.</p>
+              </div>
+              <div class="about-block">
+                <p class="mini-label">(hopefully) Fun facts??</p>
+                <div class="facts">
+                  <p>+ I enjoy roadtripping and travelling solo.</p>
+                  <p>+ I’ve been living away from home for 10 years.</p>
+                  <p>+ I’ve lived in 3 places in U.S. within 4 years.</p>
+                  <p>+ I can distinguish 70% of birds in Southern California.</p>
+                  <p>+ I’ve worked as a beverage barista and street salesperson, driving 35% of the store’s daily revenue.</p>
+                </div>
+              </div>
+              <div class="about-block">
+                <p class="mini-label">Somewhere nice</p>
+                <div class="places-list">
+                  <a href="https://beatricewong.com/2024/01/18/fuzhou-sanfang-qixiang-oct-2023/" target="_blank" rel="noopener">sanfang qixiang, fuzhou, china</a>
+                  <a href="https://www.instagram.com/p/DLyidipReK6/" target="_blank" rel="noopener">heisler park, laguna beach, ca</a>
+                  <a href="https://www.instagram.com/nookcoffeebar/" target="_blank" rel="noopener">nook coffee bar, costa mesa, ca</a>
+                  <a href="https://www.instagram.com/littlecupcakebakeshop/" target="_blank" rel="noopener">little cupcake shop, new york, ny</a>
+                  <a href="https://www.instagram.com/787coffee/" target="_blank" rel="noopener">787 coffee, new york, ny</a>
+                  <a href="https://www.visitbloomington.com/blog/stories/post/things-to-do-at-griffy-lake/" target="_blank" rel="noopener">griffy lake, bloomington, IN</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-row">
+      <div class="contact-info">
+        <div class="contact-card">
+          <p class="contact-heading">💌 Thanks for reviewing my portfolio!</p>
+          <p>I would love to take any opportunities as a chance to growth. Please kindly consider me as a help.</p>
+          <a class="contact-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=qiao@iu.edu" target="_blank" rel="noopener">qiao@iu.edu</a>
+          <p class="contact-note">or leave a quick note in the box — you can expect a reply from me <b>within 24 hours</b>.</p>
+        </div>
+        <p class="copyright">© 2026 made by sunny</p>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="text" autocomplete="off">
+          </div>
+        </div>
+        <div class="field message">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message"></textarea>
+        </div>
+        <div class="form-footer">
+          <p class="form-status" id="form-status"></p>
+          <button class="send-btn" id="send-btn" type="submit">send</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <script>
+    // live local time in Bloomington, Indiana
+    function tick() {
+      document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US', {
+        timeZone: 'America/Indiana/Indianapolis',
+        hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // core / work experience / about me tabs
+    const tabs = document.querySelectorAll('.tab-item');
+    const panels = { core: 'panel-core', work: 'panel-work', me: 'panel-me' };
+    function activateTab(name) {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+      Object.entries(panels).forEach(([key, id]) => {
+        document.getElementById(id).classList.toggle('active', key === name);
+      });
+    }
+    tabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.tab)));
+
+    // hero "About" link -> switch to about-me tab and scroll there
+    document.getElementById('about-link').addEventListener('click', e => {
+      e.preventDefault();
+      activateTab('me');
+      document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // contact form -> delivers to qiao@iu.edu via FormSubmit
+    document.getElementById('contact-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('send-btn');
+      const status = document.getElementById('form-status');
+      const name = document.getElementById('cf-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+      if (!message) {
+        status.className = 'form-status err';
+        status.textContent = 'please write a short message first :)';
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'sending…';
+      status.textContent = '';
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/qiao@iu.edu', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name: name || 'anonymous visitor',
+            email: email || 'not provided',
+            message: message,
+            _subject: 'Portfolio note from ' + (name || 'a visitor')
+          })
+        });
+        if (!res.ok) throw new Error('send failed');
+        btn.textContent = 'sent ♡';
+        status.className = 'form-status ok';
+        status.textContent = 'thanks! sunny will reply within 24 hours.';
+        e.target.reset();
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'send';
+        status.className = 'form-status err';
+        status.textContent = 'something went wrong — please email qiao@iu.edu directly.';
+      }
+    });
+  </script>
+</body>
+</html>

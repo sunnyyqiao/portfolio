@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Should a “Data-to-Earn” Telecom Exist? — Sunny Qiao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,300..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .two-col { display: grid; gap: 40px; align-items: center; }
+    .context-grid { grid-template-columns: 1fr 547px; gap: 32px; }
+    .chart-text { grid-template-columns: 524fr 436fr; }
+    .sizing-grid { grid-template-columns: 512fr 431fr; gap: 57px; }
+    .centered-img { margin: 0 auto; max-width: 100%; }
+    .paradox-cols { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .paradox-cols p { font-size: 16px; }
+    .wireframes {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 40px 38px;
+    }
+    .wf {
+      aspect-ratio: 169 / 364;
+      border-radius: 21px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    }
+    .kd-phones { display: grid; grid-template-columns: repeat(4, 220px); gap: 40px; }
+    .kd-phone { width: 220px; max-width: 100%; aspect-ratio: 220 / 476; border-radius: 27px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
+    .nda { font-size: 16px; font-weight: 700; font-style: italic; color: var(--ink-60); }
+    @media (max-width: 900px) {
+      .paradox-cols { grid-template-columns: 1fr; }
+      .wireframes { grid-template-columns: repeat(3, 1fr); }
+      .kd-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .kd-phone { width: 100%; }
+    }
+    @media (max-width: 560px) {
+      .wireframes { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="intro">
+      <div class="title">
+        <h1>Should a “Data-to-Earn” Telecom Exist?</h1>
+        <p class="subtitle">Market-entry feasibility for a two-sided telecom startup</p>
+      </div>
+      <div class="info">
+        <div class="info-row">
+          <div class="meta">
+            <p class="meta-label">BUSINESS CHALLENGE</p>
+            <p>Phone bills are a heavy cost for budget users. Companies need bot-free human data. Can a “data-to-earn” model serve both?</p>
+          </div>
+          <div class="meta">
+            <p class="meta-label">MY ROLE</p>
+            <ul>
+              <li>Business Analyst</li>
+              <li>Product Designer</li>
+              <li><em style="font-style: normal;">Solo ~4 weeks</em></li>
+            </ul>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="meta">
+            <p class="meta-label">SOLUTION</p>
+            <p>Verdict: conditionally viable — My recommendation: validate demand cheaply before building.</p>
+          </div>
+          <div class="meta">
+            <p class="meta-label">DELIVERED</p>
+            <ul>
+              <li>Market Entry Report</li>
+              <li>B2B Client Strategy</li>
+              <li>User Validation Roadmap</li>
+              <li>Interactive Prototype</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Context</h2>
+      <div class="two-col context-grid">
+        <img src="assets/mvno-business-model.png" alt="Data-to-earn business model diagram" style="width: 100%; object-fit: contain;">
+        <div class="stack-20">
+          <p class="body semi muted">Founder's pitch: a wireless plan where users pay with data, not money — completing micro-tasks (AI training, surveys) to earn phone credit, while their verified, bot-free data is sold to companies.</p>
+          <p class="body semi accent">Is it viable — before we begin to build?</p>
+          <p class="body">As a <span class="semi accent" style="font-style: italic;">Product Designer taking on a Business Analyst role</span>, I treated the business model itself as the thing to be designed and tested at the minimum cost, not just designing the screens.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gap-40">
+      <div class="stack-20">
+        <h2>Setting the Hypothesis</h2>
+        <p class="body">Consumers will trade their time and verified identity for wireless credit, and enterprises will pay a premium for bot-free, SIM-verified human data from multicultural, real-world populations. <span class="semi accent">We will aim to lower fixed cost and get quick-wins.</span></p>
+      </div>
+      <img class="centered-img" src="assets/mvno-operations.png" alt="Operations mental model" style="width: 819px; object-fit: contain;">
+    </section>
+
+    <section class="stack-80" style="gap: 80px;">
+
+      <div class="stack-40 center">
+        <div class="stack-20" style="width: 100%;">
+          <h2>Analytical Framework</h2>
+          <p class="body">Before any money or code went in, <strong class="accent">is this worth building at all?</strong></p>
+          <p class="body">I broke it into the three checkpoints:</p>
+        </div>
+        <img class="centered-img" src="assets/mvno-step-chart.png" alt="Three checkpoints: regulations, demand and supply, market sizing" style="width: 646px; object-fit: contain;">
+        <p class="body" style="width: 100%;">Three principles ran through the work: treating regulation as a first-order risk, reverse-engineering who the real customer is, and refusing to trust any number I couldn't verify.</p>
+      </div>
+
+      <div class="stack-40">
+        <div class="stack-20">
+          <h3>Regulations</h3>
+          <p class="body">I prioritized <strong class="accent">regulations first</strong>, as this business is built on collecting and reselling personal data, so if the law doesn’t allow it, the entire model collapses. I mapped these as <strong class="accent">sequential compliance gates</strong>; each must be cleared before moving to the next step.</p>
+          <p class="body">Furthermore, distilling these into a regulatory risk matrix (likelihood × impact, with mitigations), CPNI and AB5 are the <strong class="accent">make-or-break risks</strong>. CCPA is <strong class="accent-80">serious but manageable</strong>; COPPA and FTC scrutiny are <strong class="accent-60">lower priority</strong>.</p>
+        </div>
+        <div style="display: flex; gap: 79px; align-items: center; flex-wrap: wrap;">
+          <div class="crop crop-gates" style="width: 559px; max-width: 100%; aspect-ratio: 559 / 341;">
+            <img src="assets/mvno-compliance-gates.png" alt="Sequential compliance gates diagram">
+          </div>
+          <div class="crop crop-matrix" style="width: 362px; max-width: 100%; aspect-ratio: 362 / 341;">
+            <img src="assets/mvno-risk-matrix.png" alt="Regulatory risk matrix">
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-80">
+        <div class="stack-20">
+          <h3>Demand &amp; Supply</h3>
+          <p class="body">This is a <strong class="accent">B2B data supply business</strong> in a <strong class="accent-60">B2C wrapper</strong>, so the wireless plan is the hook that attracts the people whose data we sell.</p>
+          <p class="body">We build a platform to facilitate this value exchange between data contributors and enterprise partners, where payments from enterprise data buyers directly offset consumers' mobile bills under this data-to-earn ecosystem.</p>
+        </div>
+
+        <div class="stack-40">
+          <div class="stack-20">
+            <h4>The Reframe</h4>
+            <p class="body">The <strong class="accent">real customers</strong> are the enterprises buying that data, and they partially subsidize the phone bill of <strong class="accent-80">users</strong> as their data producers, so I reverse-engineered the <span class="semi accent">actual demand</span> from who gives the <span class="semi accent">business revenue</span>, and split the market into two sides:</p>
+          </div>
+          <div class="two-col chart-text">
+            <img src="assets/mvno-two-sides.png" alt="Two-sided market chart" style="width: 100%; object-fit: contain;">
+            <div class="stack-40">
+              <div class="stack-20">
+                <p class="body"><strong class="accent">DEMAND:</strong> Enterprises that need real market feedback to refine their products and grow sales.</p>
+                <p class="body med muted">Will enterprises pay for the data?</p>
+              </div>
+              <div class="stack-20">
+                <p class="body"><strong class="accent">SUPPLY:</strong> People who will produce data with real market value in exchange for billing credit.</p>
+                <p class="body med muted">Will users do tasks for credit?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-40 center">
+          <h4 style="width: 100%;">Solving the Business Paradox</h4>
+          <img class="centered-img" src="assets/mvno-buyers.png" alt="Buyers who want this audience" style="width: 609px; object-fit: contain;">
+          <div class="paradox-cols">
+            <p><strong class="accent-60">PROBLEM:</strong> The users most eager to save have lower disposable income and little spending power to traditional advertisers.</p>
+            <p><strong class="accent-80">RETHINK:</strong> The resolution wasn't to “find rich users.” It was pick the buyers for whom this exact audience is valuable.</p>
+            <p><strong class="accent">SOLUTION:</strong> Target whoever produces data that these specific B2B clients will find essential and pay for.</p>
+          </div>
+        </div>
+
+        <div class="stack-40">
+          <div class="stack-20">
+            <h4>Client Acquisition Approach</h4>
+            <p class="body">I sequenced enterprise outreach by <strong class="accent">fit &amp; decision-making speed</strong>, using <strong class="accent-80">funding round</strong> as a proxy.</p>
+          </div>
+          <div class="two-col chart-text">
+            <img src="assets/mvno-acquisition.png" alt="Client acquisition sequencing chart" style="width: 100%; object-fit: contain;">
+            <div class="stack-40" style="gap: 24px;">
+              <div class="stack-20">
+                <p class="body"><strong class="accent">FIRST TARGETS:</strong> Early-stage companies are open to new vendors — better price, room to negotiate, and shorter sales cycle.</p>
+                <p class="body med muted">We earn revenue early and secure quick wins.</p>
+              </div>
+              <div class="stack-20">
+                <p class="body"><strong class="accent">LATER ANCHORS:</strong> Large public companies mean long procurement and locked-in suppliers.</p>
+                <p class="body med muted">Set aside until early wins open bigger doors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-40">
+        <div class="stack-20">
+          <h3>Market Sizing</h3>
+          <p class="body">To see whether the economics work, I sized the market and built the unit-economics model.</p>
+        </div>
+        <div class="two-col sizing-grid">
+          <img src="assets/mvno-market-sizing.png" alt="Market sizing chart" style="width: 100%; object-fit: contain;">
+          <div class="stack-20">
+            <p class="body">Fact-checking each against primary sources, I found:</p>
+            <ul class="bullets">
+              <li>An <span class="semi accent-80">impossible user count</span> (50M US college students → actually ~15M)</li>
+              <li>A fabricated citation - a “61%” stat from a firm and year that never existed</li>
+              <li>Enterprise rates <span class="semi accent-80">aren't publicly disclosed</span> at all</li>
+            </ul>
+            <p class="body">I marked every figure from an unverified source as an assumption. The unit economics became a sensitivity model instead of a <span class="semi accent">validated revenue projection</span>. It's a map of which numbers matter most and need testing first.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="stack-80" style="gap: 80px;">
+      <div class="stack-40 center">
+        <div class="stack-20" style="width: 100%;">
+          <h2>Prototyping the Business Model</h2>
+          <p class="body semi accent">A feasibility analysis lives in documents, but the founder and investors can't grasp a business model from paperwork.</p>
+          <p class="body">To make the concept tangible, I used Claude Design to rapidly build an interactive dashboard to <strong class="accent">illustrate the user flow</strong>:</p>
+        </div>
+        <img src="assets/mvno-user-flow.png" alt="User flow chart" style="width: 100%; object-fit: contain;">
+        <p class="body" style="width: 100%;">This gives the client something concrete to show <strong class="accent">diverse stakeholders</strong> and makes early usability testing accessible.</p>
+        <div class="wireframes">
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-1.png" alt="Prototype screen 1"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-2.png" alt="Prototype screen 2"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-3.png" alt="Prototype screen 3"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-4.png" alt="Prototype screen 4"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-5.png" alt="Prototype screen 5"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-6.png" alt="Prototype screen 6"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-7.png" alt="Prototype screen 7"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-8.png" alt="Prototype screen 8"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-9.png" alt="Prototype screen 9"></div>
+          <div class="crop crop-wf wf"><img src="assets/mvno-wf-10.png" alt="Prototype screen 10"></div>
+        </div>
+      </div>
+
+      <div class="stack-40">
+        <div class="stack-20">
+          <h4>Key Design Choice</h4>
+          <p class="body semi accent" style="font-style: italic;">Making the earning loop legible and trustworthy</p>
+          <p class="body">Because the whole model asks users <strong class="accent">to share data</strong>, transparency of <span class="semi accent">‘what you've earned and why’</span> makes the value exchange feel fair.</p>
+        </div>
+        <div class="kd-phones">
+          <div class="crop crop-wf kd-phone"><img src="assets/mvno-wf-10.png" alt="Earnings screen"></div>
+          <div class="crop crop-wf kd-phone"><img src="assets/mvno-kd-2.png" alt="Earning breakdown screen"></div>
+          <div class="crop crop-wf kd-phone"><img src="assets/mvno-kd-3.png" alt="Task history screen"></div>
+          <div class="crop crop-wf kd-phone"><img src="assets/mvno-kd-4.png" alt="Credit applied screen"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gap-40">
+      <div class="stack-20">
+        <h2>Outcomes</h2>
+        <p class="body"><strong class="accent">Verdict: conditionally viable</strong>, if execution is disciplined on regulatory compliance, B2B pricing, and user engagement. I also delivered a validation roadmap for what comes next, and below four deliverables will be sufficient for the client to make initial testing and decision. My work helped the founder avoid committing an estimated ~<strong class="accent">$40K to a premature build</strong>.</p>
+      </div>
+      <div class="cards">
+        <div class="card card-blue">
+          <div class="card-content">
+            <div class="card-title">
+              <img src="assets/mvno-icon-feasibility.svg" alt="">
+              <span>Feasibility Report</span>
+            </div>
+            <p>Viability verdict across user, market, economics &amp; regulation</p>
+          </div>
+        </div>
+        <div class="card card-green">
+          <div class="card-content">
+            <div class="card-title">
+              <img src="assets/mvno-icon-gtm.svg" alt="">
+              <span>GTM Strategy</span>
+            </div>
+            <p>Prioritized B2B clients, sourcing method, outreach sequence</p>
+          </div>
+        </div>
+        <div class="card card-purple">
+          <div class="card-content">
+            <div class="card-title">
+              <img src="assets/mvno-icon-survey.svg" alt="">
+              <span>User Survey</span>
+            </div>
+            <p>User-validation plan to validate demand and strengthen GTM strategy + unit-economics</p>
+          </div>
+        </div>
+        <div class="card card-pink">
+          <div class="card-content">
+            <div class="card-title">
+              <img src="assets/mvno-icon-mvp.svg" alt="">
+              <span>MVP Prototype</span>
+            </div>
+            <p>Dashboard of the “data-to-earn model” for rapid usability testing for B2C customers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stack-40 center" style="gap: 40px;">
+      <h2 style="width: 100%; text-align: left;">What I learned</h2>
+      <img class="centered-img" src="assets/mvno-learned.png" alt="What I learned — four cards" style="width: 846px; object-fit: contain;">
+      <div class="stack-20" style="width: 100%;">
+        <p class="body">I came away convinced that the <span class="semi accent">business analyst role</span> is about to change shape. The analysts who'll thrive are the ones who can multitask across tools to deliver multi-dimensional analysis, narrate a complex business challenge simply, pairing <span class="semi accent-80">hyperspecialized industry expertise</span> with the ability to put a testable product in the client's hands early.</p>
+        <p class="body">We, as human business analyst and product designer, should embrace our <span class="semi accent">taste, observation, and strategic decision-making</span>. We decide what's <span class="semi accent">worth</span> doing, and know what <span class="semi accent">"good"</span> looks like. That's the part AI can't hand us.</p>
+      </div>
+    </section>
+
+    <p class="nda">Sourced figures cited in the case study are drawn from public research. Work conducted for a confidential client; details are under NDA / a general walkthrough is available on request.</p>
+
+    <a class="next-work" href="sensing-impressionism.html">
+      <span class="next-label">SEE NEXT WORK</span>
+      <span class="next-title">Sensing Impressionism</span>
+    </a>
+
+  </main>
+</body>
+</html>
