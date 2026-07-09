@@ -59,7 +59,8 @@
     .proj-sub { font-size: 10px; color: var(--ink-60); }
     .project-items:hover .proj:not(:hover) { opacity: 0.25; }
     .proj:hover .proj-title { color: var(--rose); }
-    .overview { display: flex; flex-direction: column; gap: 12px; width: 517px; max-width: 100%; opacity: 0; transition: opacity 0.3s ease; }
+    /* overview 面板暂时隐藏（per-project 内容准备好后改回 display: flex 即可恢复 hover 交互） */
+    .overview { display: none; flex-direction: column; gap: 12px; width: 517px; max-width: 100%; opacity: 0; transition: opacity 0.3s ease; }
     .project-items:hover ~ .overview { opacity: 1; }
     .overview-box {
       border: 1px solid rgba(0, 0, 0, 0.1); background: #fff;
