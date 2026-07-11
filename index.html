@@ -158,12 +158,12 @@
     .form-status.ok { color: var(--green); }
     .form-status.err { color: var(--accent); }
     .send-btn {
-      background: var(--rose); color: #fff; border: none; font-family: inherit;
-      font-size: 14px; font-weight: 600; padding: 10px 36px; border-radius: 999px;
-      cursor: pointer; transition: background 0.18s ease;
+      background: none; border: none; font-family: inherit;
+      font-size: 14px; font-weight: 600; color: var(--ink-60); cursor: pointer; padding: 0;
+      transition: color 0.15s ease;
     }
-    .send-btn:hover:not(:disabled) { background: var(--accent); }
-    .send-btn:disabled { opacity: 0.75; cursor: default; }
+    .send-btn:hover:not(:disabled) { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
+    .send-btn:disabled { cursor: default; color: var(--ink-60); }
 
     /* ---------- responsive ---------- */
     @media (max-width: 900px) {
