@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunny Qiao — UX/Product Designer</title>
+  <title>Sunny Qiao — UX × Product Designer</title>
+  <meta name="description" content="I design enterprise systems that reduce operational friction and de-risk what to build next.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sunny Qiao — UX × Product Designer">
+  <meta property="og:description" content="I design enterprise systems that reduce operational friction and de-risk what to build next.">
+  <meta property="og:url" content="https://sunnyyqiao.github.io/portfolio/">
+  <meta property="og:image" content="https://sunnyyqiao.github.io/portfolio/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sunny Qiao — UX × Product Designer">
+  <meta name="twitter:image" content="https://sunnyyqiao.github.io/portfolio/assets/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,300..1000&family=Crimson+Text:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,6 +35,7 @@
 
     /* ---------- hero ---------- */
     .hero { display: flex; flex-direction: column; gap: 12px; }
+    .hero h1 .hl { color: rgba(158, 69, 96, 0.6); }
     .real-time { font-family: "Crimson Text", serif; font-size: 14px; color: var(--rose-70); }
     .hero-title { display: flex; flex-direction: column; gap: 28px; }
     .name-intro { display: flex; flex-direction: column; gap: 16px; }
@@ -143,12 +158,12 @@
     .form-status.ok { color: var(--green); }
     .form-status.err { color: var(--accent); }
     .send-btn {
-      background: none; border: none; font-family: inherit;
-      font-size: 14px; font-weight: 600; color: var(--ink-60); cursor: pointer; padding: 0;
-      transition: color 0.15s ease;
+      background: var(--rose); color: #fff; border: none; font-family: inherit;
+      font-size: 14px; font-weight: 600; padding: 10px 36px; border-radius: 999px;
+      cursor: pointer; transition: background 0.18s ease;
     }
-    .send-btn:hover:not(:disabled) { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
-    .send-btn:disabled { cursor: default; color: var(--ink-60); }
+    .send-btn:hover:not(:disabled) { background: var(--accent); }
+    .send-btn:disabled { opacity: 0.75; cursor: default; }
 
     /* ---------- responsive ---------- */
     @media (max-width: 900px) {
@@ -169,7 +184,7 @@
       <p class="real-time">it&rsquo;s <span id="clock">--:--:-- --</span> in Bloomington, Indiana</p>
       <div class="hero-title">
         <div class="name-intro">
-          <h1>I design B2B systems and internal tools that turn diverse stakeholder needs into clear workflows, prototypes, and business decisions</h1>
+          <h1>I design enterprise systems that <span class="hl">reduce operational friction</span> and de-risk what to build next</h1>
           <div class="ship-tags">
             <span class="ship-label">shipped products in</span>
             <span class="chip">Enterprise SaaS</span>
@@ -246,18 +261,6 @@
         <div class="tab-panel active" id="panel-core">
           <div class="lrows">
             <div class="lrow">
-              <p class="lrow-label">TECHNICAL FLUENCY</p>
-              <div class="lrow-body chips">
-                <span class="chip">Python</span>
-                <span class="chip">Git</span>
-                <span class="chip">Bash</span>
-                <span class="chip">HTML</span>
-                <span class="chip">CSS</span>
-                <span class="chip">JavaScript</span>
-                <span class="chip">Raspberry Pi</span>
-              </div>
-            </div>
-            <div class="lrow">
               <p class="lrow-label">UX SKILLS</p>
               <div class="lrow-body chips">
                 <span class="chip">Figma</span>
@@ -279,6 +282,18 @@
                 <span class="chip">Comfort with ambiguity</span>
                 <span class="chip">Structured documentation</span>
                 <span class="chip">Cross-functional collaboration</span>
+              </div>
+            </div>
+            <div class="lrow">
+              <p class="lrow-label">TECHNICAL FLUENCY</p>
+              <div class="lrow-body chips">
+                <span class="chip">Python</span>
+                <span class="chip">Git</span>
+                <span class="chip">Bash</span>
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">Raspberry Pi</span>
               </div>
             </div>
           </div>
