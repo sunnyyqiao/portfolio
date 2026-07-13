@@ -35,7 +35,10 @@
 
     /* ---------- hero ---------- */
     .hero { display: flex; flex-direction: column; gap: 12px; }
-    .hero h1 .hl { color: rgba(158, 69, 96, 0.6); }
+    .hero h1 { transition: color 0.3s ease; }
+    .hero h1 .hl { color: rgba(158, 69, 96, 0.6); transition: color 0.3s ease; }
+    .hero h1:hover { color: rgba(0, 0, 0, 0.5); }
+    .hero h1:hover .hl { color: #9e4560; }
     .real-time { font-family: "Crimson Text", serif; font-size: 14px; color: var(--rose-70); }
     .hero-title { display: flex; flex-direction: column; gap: 28px; }
     .name-intro { display: flex; flex-direction: column; gap: 16px; }
@@ -51,13 +54,7 @@
       transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
     }
     .chips .chip:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
-    .sub-info { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
-    .open-to-work {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--rose); font-weight: 600; width: fit-content;
-    }
-    .otw-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .sub-info { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: #000; }
     .cta-links { display: flex; gap: 20px; font-size: 12px; font-weight: 500; }
     .cta-links a { color: var(--ink-60); text-decoration: none; transition: color 0.15s ease; }
     .cta-links a:hover { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
@@ -74,17 +71,17 @@
     .proj-sub { font-size: 10px; color: var(--ink-60); }
     .project-items:hover .proj:not(:hover) { opacity: 0.25; }
     .proj:hover .proj-title { color: var(--rose); }
-    /* overview 面板暂时隐藏（per-project 内容准备好后改回 display: flex 即可恢复 hover 交互） */
-    .overview { display: none; flex-direction: column; gap: 12px; width: 517px; max-width: 100%; opacity: 0; transition: opacity 0.3s ease; }
-    .project-items:hover ~ .overview { opacity: 1; }
+    .overview { display: flex; flex-direction: column; gap: 12px; width: 517px; max-width: 100%; opacity: 0; transition: opacity 0.3s ease; }
+    .projects-row:hover .overview { opacity: 1; }
     .overview-box {
       border: 1px solid rgba(0, 0, 0, 0.1); background: #fff;
-      height: 331px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 24px; gap: 12px;
+      height: 331px; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 24px;
+      text-decoration: none; color: #000;
     }
-    .overview-box .ov-line { font-size: 16px; }
-    .overview-box .ov-big { font-size: 20px; font-weight: 700; }
-    .overview-caption { font-size: 14px; color: var(--ink-60); }
+    .overview-box .ov-tbd { font-size: 16px; font-weight: 700; color: #000; }
+    .overview-box[href] { cursor: pointer; }
+    .overview-caption { font-size: 12px; color: var(--ink-60); min-height: 1em; }
 
     /* ---------- core / work / about tabs ---------- */
     .tabs-row { display: flex; flex-direction: row; gap: 120px; align-items: flex-start; }
@@ -193,8 +190,8 @@
           </div>
         </div>
         <div class="sub-info">
-          <p>+ M.S. HCI/d at Indiana University (May 2027)</p>
-          <p class="open-to-work"><span class="otw-dot"></span>Open to work opportunities in B2B, Healthcare, CPG</p>
+          <p>M.S. HCI/d at Indiana University (May 2027)</p>
+          <p>Open to work opportunities in B2B, Healthcare, CPG</p>
         </div>
         <nav class="cta-links">
           <a href="#about" id="about-link">Sunny Qiao</a>
@@ -207,37 +204,36 @@
 
     <section class="projects-row">
       <div class="project-items">
-        <a class="proj" href="data-to-earn.html">
-          <span class="proj-title">“Data-to-Earn” Telecom System Market Entry</span>
-          <span class="proj-sub">market-entry feasibility for a two-sided telecom startup</span>
+        <a class="proj" href="data-to-earn.html" data-caption="From who pays to what gets built. I mapped enterprise demand, user incentives, service workflows, and validation steps before engineering investment.">
+          <span class="proj-title">Should this Telecom Venture even Exist?</span>
+          <span class="proj-sub">Validated the revenue engine behind a two-sided market</span>
         </a>
-        <a class="proj" href="sensing-impressionism.html">
-          <span class="proj-title">Musuem Experience Design for Impressionism</span>
-          <span class="proj-sub">a multi-modal system across physical, spatial, and screen</span>
+        <a class="proj" href="sensing-impressionism.html" data-caption="Least wall text. I designed a connected multi-layer experience to help visitors tour the museum and help the institution to retain business.">
+          <span class="proj-title">Museum Experience Design</span>
+          <span class="proj-sub">Embodied journey of impressionism across self, space, and screen</span>
         </a>
-        <a class="proj" href="tracy.html">
+        <a class="proj" href="tracy.html" data-caption="Built the full loop: floor-level sensing → on-device classification → dashboard reflection. Tested how privacy, uncertainty, and trust should shape what the robot communicates.">
           <span class="proj-title">Robotics System Design &amp; Engineering</span>
-          <span class="proj-sub">an ambient robot that reads everyday traces as health signals</span>
+          <span class="proj-sub">Ambiently turn everyday bodily traces into wellness signals</span>
         </a>
-        <div class="proj">
-          <span class="proj-title">Solve Decision Fatigue for Corporate Workers</span>
-          <span class="proj-sub">case study coming soon</span>
+        <div class="proj" data-caption="Structuring the right information to actual revenue. I led the IA, UX content, design system, front-end QA, and localization from concept to launch." data-link="https://www.wepig.cn/en">
+          <span class="proj-title">Decode Enterprise SaaS to Buyer Clarity</span>
+          <span class="proj-sub">Designed a livestock management product website</span>
         </div>
-        <div class="proj">
-          <span class="proj-title">B2B Corporate Website Design</span>
-          <span class="proj-sub">case study coming soon</span>
+        <div class="proj" data-caption="Mapped where marketers lose clarity across prompting, multi-step workflows, and trade-offs to support for orientation, control, and context.">
+          <span class="proj-title">AI/UX Patterns for Reducing Decision Fatigue</span>
+          <span class="proj-sub">Fall 2025 Extern @Adobe</span>
         </div>
-        <div class="proj">
-          <span class="proj-title">Integrate AI into Local Café</span>
-          <span class="proj-sub">case study coming soon</span>
+        <div class="proj" data-caption="Designed customer experience optionality that gives baristas a natural conversation starter while preserving privacy, comfort, and agency.">
+          <span class="proj-title">Human-AI Collaboration in Local Cafés</span>
+          <span class="proj-sub">AI × POS as a service facilitator to augment barista work of hospitality</span>
         </div>
       </div>
       <div class="overview" aria-hidden="true">
-        <div class="overview-box">
-          <p class="ov-line">这是一个tbd界面（正在我的垃圾堆里火速作图</p>
-          <p class="ov-big">谢谢你看我的作品集，祝你不劳而获很多刀乐</p>
-        </div>
-        <p class="overview-caption">[two-lines-max-addition-to-elaborate]</p>
+        <a class="overview-box" id="overview-box" target="_blank" rel="noopener">
+          <span class="ov-tbd">ILLUSTRATION TBD</span>
+        </a>
+        <p class="overview-caption" id="overview-caption"></p>
       </div>
     </section>
 
@@ -421,6 +417,21 @@
       });
     }
     tabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.tab)));
+
+    // projects: hovering an item fills the overview panel on the right
+    const ovBox = document.getElementById('overview-box');
+    const ovCaption = document.getElementById('overview-caption');
+    ovBox.removeAttribute('href');
+    document.querySelectorAll('.proj').forEach(p => {
+      p.addEventListener('mouseenter', () => {
+        ovCaption.textContent = p.dataset.caption || '';
+        if (p.dataset.link) {
+          ovBox.setAttribute('href', p.dataset.link);
+        } else {
+          ovBox.removeAttribute('href');
+        }
+      });
+    });
 
     // hero "About" link -> switch to about-me tab and scroll there
     document.getElementById('about-link').addEventListener('click', e => {
