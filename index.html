@@ -69,10 +69,10 @@
     }
     .proj-title { font-size: 16px; font-weight: 500; color: #000; transition: color 0.15s ease; }
     .proj-sub { font-size: 10px; color: var(--ink-60); }
-    .project-items:hover .proj:not(:hover) { opacity: 0.25; }
-    .proj:hover .proj-title { color: var(--rose); }
+    .projects-row.showing .proj:not(.active) { opacity: 0.25; }
+    .proj.active .proj-title { color: var(--rose); }
     .overview { display: flex; flex-direction: column; gap: 12px; width: 517px; max-width: 100%; opacity: 0; transition: opacity 0.3s ease; }
-    .projects-row:hover .overview { opacity: 1; }
+    .projects-row.showing .overview { opacity: 1; }
     .overview-box {
       border: 1px solid rgba(0, 0, 0, 0.1); background: #fff;
       height: 331px; display: flex; align-items: center; justify-content: center;
@@ -80,6 +80,7 @@
       text-decoration: none; color: #000;
     }
     .overview-box .ov-tbd { font-size: 16px; font-weight: 700; color: #000; }
+    .overview-box img { max-width: 60%; max-height: 60%; width: 190px; height: auto; object-fit: contain; }
     .overview-box[href] { cursor: pointer; }
     .overview-caption { font-size: 12px; color: var(--ink-60); min-height: 1em; }
 
@@ -216,7 +217,7 @@
           <span class="proj-title">Robotics System Design &amp; Engineering</span>
           <span class="proj-sub">Ambiently turn everyday bodily traces into wellness signals</span>
         </a>
-        <div class="proj" data-caption="Structuring the right information to actual revenue. I led the IA, UX content, design system, front-end QA, and localization from concept to launch." data-link="https://www.wepig.cn/en">
+        <div class="proj" data-caption="Structuring the right information to actual revenue. I led the IA, UX content, design system, front-end QA, and localization from concept to launch." data-link="https://www.wepig.cn/en" data-img="assets/wepig-logo-en.png">
           <span class="proj-title">Decode Enterprise SaaS to Buyer Clarity</span>
           <span class="proj-sub">Designed a livestock management product website</span>
         </div>
@@ -230,8 +231,9 @@
         </div>
       </div>
       <div class="overview" aria-hidden="true">
-        <a class="overview-box" id="overview-box" target="_blank" rel="noopener">
-          <span class="ov-tbd">ILLUSTRATION TBD</span>
+        <a class="overview-box" id="overview-box" rel="noopener">
+          <span class="ov-tbd" id="overview-tbd">ILLUSTRATION TBD</span>
+          <img id="overview-img" alt="Project preview" hidden>
         </a>
         <p class="overview-caption" id="overview-caption"></p>
       </div>
@@ -418,19 +420,41 @@
     }
     tabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.tab)));
 
-    // projects: hovering an item fills the overview panel on the right
+    // projects: hovering an item fills the overview panel; the highlighted/faded
+    // state persists while the pointer moves onto the overview (until leaving the row)
+    const projRow = document.querySelector('.projects-row');
+    const projItems = [...document.querySelectorAll('.proj')];
     const ovBox = document.getElementById('overview-box');
     const ovCaption = document.getElementById('overview-caption');
+    const ovImg = document.getElementById('overview-img');
+    const ovTbd = document.getElementById('overview-tbd');
     ovBox.removeAttribute('href');
-    document.querySelectorAll('.proj').forEach(p => {
+    projItems.forEach(p => {
       p.addEventListener('mouseenter', () => {
+        projRow.classList.add('showing');
+        projItems.forEach(i => i.classList.toggle('active', i === p));
         ovCaption.textContent = p.dataset.caption || '';
-        if (p.dataset.link) {
-          ovBox.setAttribute('href', p.dataset.link);
+        const link = p.getAttribute('href') || p.dataset.link;
+        if (link) {
+          ovBox.setAttribute('href', link);
+          if (/^https?:/.test(link)) { ovBox.setAttribute('target', '_blank'); }
+          else { ovBox.removeAttribute('target'); }
         } else {
           ovBox.removeAttribute('href');
         }
+        if (p.dataset.img) {
+          ovImg.src = p.dataset.img;
+          ovImg.hidden = false;
+          ovTbd.hidden = true;
+        } else {
+          ovImg.hidden = true;
+          ovTbd.hidden = false;
+        }
       });
+    });
+    projRow.addEventListener('mouseleave', () => {
+      projRow.classList.remove('showing');
+      projItems.forEach(i => i.classList.remove('active'));
     });
 
     // hero "About" link -> switch to about-me tab and scroll there
