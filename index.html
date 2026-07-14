@@ -54,7 +54,10 @@
       transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
     }
     .chips .chip:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
-    .sub-info { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: #000; }
+    .impact-strip { display: flex; gap: 64px; flex-wrap: wrap; }
+    .impact { display: flex; flex-direction: column; gap: 4px; }
+    .impact-n { font-size: 28px; font-weight: 800; color: var(--ink-90); }
+    .impact-l { font-size: 12px; color: var(--ink-60); max-width: 150px; }
     .cta-links { display: flex; gap: 20px; font-size: 12px; font-weight: 500; }
     .cta-links a { color: var(--ink-60); text-decoration: none; transition: color 0.15s ease; }
     .cta-links a:hover { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
@@ -130,16 +133,27 @@
     /* ---------- contact ---------- */
     .contact-row { display: flex; flex-direction: row; gap: 80px; align-items: stretch; }
     .contact-info { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; width: 440px; flex-shrink: 0; }
-    .contact-card { display: flex; flex-direction: column; gap: 18px; }
-    .contact-heading { font-size: 22px; font-weight: 600; color: var(--rose); }
-    .contact-card > p { font-size: 14px; }
-    .contact-email {
-      font-size: 18px; font-weight: 700; color: var(--rose);
-      text-decoration: none; width: fit-content;
+    .contact-card { display: flex; flex-direction: column; gap: 20px; }
+    .contact-heading-row { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-heading {
+      font-family: "Crimson Text", serif;
+      font-size: 38px; font-weight: 600; color: var(--rose); line-height: 1.15;
     }
-    .contact-email:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .contact-note { font-size: 12px; color: var(--ink-60); }
-    .contact-note b { color: var(--rose); font-weight: 600; }
+    .like-btn {
+      background: none; border: none; padding: 0; cursor: pointer;
+      width: 30px; height: 30px; flex-shrink: 0; margin-top: 8px;
+    }
+    .like-btn svg { width: 100%; height: 100%; overflow: visible; }
+    .like-btn svg path {
+      fill: transparent; stroke: var(--rose); stroke-width: 1.8;
+      transition: fill 0.2s ease;
+    }
+    .like-btn.liked svg path { fill: var(--rose); }
+    .like-btn.liked svg { animation: heartPop 0.35s ease; }
+    @keyframes heartPop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    .contact-card > p { font-size: 16px; }
+    .email-line a { color: var(--rose); font-weight: 700; text-decoration: none; }
+    .email-line a:hover { text-decoration: underline; text-underline-offset: 3px; }
     .copyright { font-size: 12px; color: var(--ink-60); }
     .contact-form { display: flex; flex-direction: column; gap: 40px; flex: 1; }
     .form-row { display: flex; gap: 80px; }
@@ -191,9 +205,23 @@
             <span class="chip">AI</span>
           </div>
         </div>
-        <div class="sub-info">
-          <p>M.S. HCI/d at Indiana University (May 2027)</p>
-          <p>Open to work opportunities in B2B, Healthcare, CPG</p>
+        <div class="impact-strip">
+          <div class="impact">
+            <p class="impact-n">~$40K</p>
+            <p class="impact-l">Premature build cost avoided</p>
+          </div>
+          <div class="impact">
+            <p class="impact-n">$20K+</p>
+            <p class="impact-l">Enterprise revenue supported</p>
+          </div>
+          <div class="impact">
+            <p class="impact-n">90%</p>
+            <p class="impact-l">Operational friction reduced</p>
+          </div>
+          <div class="impact">
+            <p class="impact-n">30+</p>
+            <p class="impact-l">Figma components created</p>
+          </div>
         </div>
         <nav class="cta-links">
           <a href="#about" id="about-link">Sunny Qiao</a>
@@ -368,10 +396,15 @@
     <section class="contact-row">
       <div class="contact-info">
         <div class="contact-card">
-          <p class="contact-heading">💌 Thanks for reviewing my portfolio!</p>
+          <div class="contact-heading-row">
+            <button class="like-btn" id="like-btn" type="button" aria-label="Like this portfolio" title="leave a like ♡">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+            <p class="contact-heading">Thanks for reviewing my portfolio!</p>
+          </div>
           <p>I would love to take any opportunities as a chance to growth. Please kindly consider me as a help.</p>
-          <a class="contact-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=qiao@iu.edu" target="_blank" rel="noopener">qiao@iu.edu</a>
-          <p class="contact-note">or leave a quick note in the box — you can expect a reply from me <b>within 24 hours</b>.</p>
+          <p class="email-line"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=qiao@iu.edu" target="_blank" rel="noopener">qiao@iu.edu</a>&nbsp; | &nbsp;Leave a quick note in the [text input] box.</p>
+          <p>You can expect a reply from me <span class="semi" style="color: var(--rose);">within 24 hours</span>.</p>
         </div>
         <p class="copyright">© 2026 made by sunny</p>
       </div>
@@ -463,6 +496,14 @@
       e.preventDefault();
       activateTab('me');
       document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // like button: toggles Instagram-style filled heart, remembered per visitor
+    const likeBtn = document.getElementById('like-btn');
+    if (localStorage.getItem('sunny-liked') === '1') likeBtn.classList.add('liked');
+    likeBtn.addEventListener('click', () => {
+      likeBtn.classList.toggle('liked');
+      localStorage.setItem('sunny-liked', likeBtn.classList.contains('liked') ? '1' : '0');
     });
 
     // contact form -> delivers to qiao@iu.edu via FormSubmit
