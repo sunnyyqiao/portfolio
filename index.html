@@ -134,14 +134,14 @@
     .contact-row { display: flex; flex-direction: row; gap: 80px; align-items: stretch; }
     .contact-info { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; width: 440px; flex-shrink: 0; }
     .contact-card { display: flex; flex-direction: column; gap: 20px; }
-    .contact-heading-row { display: flex; align-items: flex-start; gap: 14px; }
-    .contact-heading {
-      font-family: "Crimson Text", serif;
-      font-size: 38px; font-weight: 600; color: var(--rose); line-height: 1.15;
+    .contact-card > p.contact-heading {
+      font-family: var(--mono);
+      font-size: 32px; font-weight: 600; color: var(--rose); line-height: 1.3;
     }
     .like-btn {
       background: none; border: none; padding: 0; cursor: pointer;
-      width: 30px; height: 30px; flex-shrink: 0; margin-top: 8px;
+      display: inline-block; width: 28px; height: 28px;
+      vertical-align: -3px; margin-left: 4px;
     }
     .like-btn svg { width: 100%; height: 100%; overflow: visible; }
     .like-btn svg path {
@@ -396,12 +396,7 @@
     <section class="contact-row">
       <div class="contact-info">
         <div class="contact-card">
-          <div class="contact-heading-row">
-            <button class="like-btn" id="like-btn" type="button" aria-label="Like this portfolio" title="leave a like ♡">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
-            <p class="contact-heading">Thanks for reviewing my portfolio!</p>
-          </div>
+          <p class="contact-heading">Thanks for reviewing my portfolio!<button class="like-btn" id="like-btn" type="button" aria-label="Like this portfolio" title="leave a like ♡"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button></p>
           <p>I would love to take any opportunities as a chance to growth. Please kindly consider me as a help.</p>
           <p class="email-line"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=qiao@iu.edu" target="_blank" rel="noopener">qiao@iu.edu</a>&nbsp; | &nbsp;Leave a quick note in the [text input] box.</p>
           <p>You can expect a reply from me <span class="semi" style="color: var(--rose);">within 24 hours</span>.</p>
